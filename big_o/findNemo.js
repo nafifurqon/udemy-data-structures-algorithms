@@ -24,4 +24,24 @@ function logFirstTwoBoxes(boxes) {
   console.log(boxes[1])
 }
 
-logFirstTwoBoxes(boxes)
+// logFirstTwoBoxes(boxes)
+
+const findNemo2 = (array) => {
+  array.forEach((fish) => {
+    if (fish === "nemo") {
+      console.log("found NEMO!");
+    }
+  });
+};
+
+const findNemo3 = (array) => {
+  for (let fish of array) {
+    if (fish === "nemo") {
+      console.log("found NEMO!");
+    }
+  }
+};
+
+findNemo(everyone);
+findNemo2(everyone);
+findNemo3(everyone);
