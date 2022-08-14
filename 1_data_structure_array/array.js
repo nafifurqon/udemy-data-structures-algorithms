@@ -34,6 +34,14 @@ class MyArray {
     delete this.data[this.length - 1];
     this.length--;
   }
+
+  join(separator = '') {
+    let result = '';
+    for (let i = 0; i < this.length; i++) {
+      result += `${this.data[i]}${separator}`;
+    }
+    return result;
+  }
 }
 
 const newArray = new MyArray();
@@ -53,3 +61,9 @@ console.log("newArray", newArray);
 
 newArray.push('are');
 console.log('newArray', newArray);
+
+const joinArray1 = newArray.join(" * ");
+console.log('joinArray1', joinArray1)
+
+const joinArray2 = newArray.join();
+console.log('joinArray2', joinArray2)
