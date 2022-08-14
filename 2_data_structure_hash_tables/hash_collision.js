@@ -15,3 +15,6 @@ user.scream() // O(1)
 
 // hash collision = 1 lokasi memory menyimpan lebih dari data
 // karena alokasi memory yang terbatas untuk hash table
+
+const a = new Map();
+const b = new Set();
