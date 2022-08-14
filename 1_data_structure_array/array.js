@@ -1,31 +1,55 @@
-const strings = 
-['a', 'b', 'c', 'd'];
-//0    1    2    3
-// 4*4 = 16 bytes of storage
+class MyArray {
+  constructor() {
+    this.length = 0;
+    this.data = {};
+  }
 
-console.log(strings[2]); // O(1)
+  get(index) {
+    return this.data[index];
+  }
 
-// push
-strings.push('e'); // O(1)
-console.log('strings', strings)
+  push(item) {
+    this.data[this.length] = item;
+    this.length++;
+    return this.length;
+  }
 
-// pop
-strings.pop();
-strings.pop(); // O(1)
-console.log('strings', strings)
+  pop() {
+    const lasttItem = this.data[this.length - 1];
+    delete this.data[this.length - 1];
+    this.length--;
+    return lasttItem;
+  }
 
-// unshift
-strings.unshift('x'); // O(n)
-console.log('strings', strings)
+  delete(index) {
+    const item = this.data[index];
+    this.shiftItems(index);
+    return item;
+  }
 
-// splice
-strings.splice(2, 0, 'alien') // O(n)
-console.log('strings', strings)
+  shiftItems(index) {
+    for(let i = index;i < this.length - 1;i++) {
+      this.data[i] = this.data[i + 1];
+    }
+    delete this.data[this.length - 1];
+    this.length--;
+  }
+}
 
-// in C++
-// int a[20]; -> allocate memory for static array
+const newArray = new MyArray();
+console.log("newArray", newArray);
+console.log("newArray.get(0)", newArray.get(0));
 
-// static array akan selalu menggunakan alamat memory yang sama
-// karena sudah dialokasikan
+newArray.push("hi");
+newArray.push("you");
+newArray.push("!");
+console.log("newArray", newArray);
 
-// dynamic array kadang meng-copy ke alamat memory yang baru
+newArray.pop();
+console.log("newArray", newArray);
+
+newArray.delete(1);
+console.log("newArray", newArray);
+
+newArray.push('are');
+console.log('newArray', newArray);
