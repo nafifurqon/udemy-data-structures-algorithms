@@ -124,7 +124,22 @@ class LinkedList {
   }
 
   remove(index) {
+    if (index === 0) {
+      this.head = this.head.next;
+    } else {
+      let leader = {};
+      if (index >= this.length) {
+        leader = this.traverseToIndex(this.length - 2);
+      } else {
+        leader = this.traverseToIndex(index - 1);
+      }
 
+      const holdingPointer = leader.next;
+      leader.next = holdingPointer.next;
+    }
+
+    this.length--;
+    return this.printList();
   }
 }
 
@@ -160,3 +175,6 @@ console.log('myLinkedList', myLinkedList.printList())
 console.log('myLinkedList', myLinkedList.insert(2, 99));
 console.log('myLinkedList', myLinkedList.insert(20, 88));
 console.log('myLinkedList', myLinkedList.insert(0, 77));
+
+// my test case - remove
+console.log('myLinkedList', myLinkedList.remove(2));
