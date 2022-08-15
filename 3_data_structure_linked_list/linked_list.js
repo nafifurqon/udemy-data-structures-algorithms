@@ -151,6 +151,27 @@ class LinkedList {
     this.length--;
     return this.printList();
   }
+
+  // if linked list = 1 -> 10 -> 16 -> 88
+  // should be = 88 -> 10 -> 16 -> 1
+  reverse() {
+    if (this.length === 1) {
+      return this.head;
+    }
+
+    let first = this.head;
+    this.tail = this.head;
+    let second = first.next;
+    while (second) {
+      const temp = second.next;
+      second.next = first;
+      first = second;
+      second = temp;
+    }
+    this.head.next = null;
+    this.head = first;
+    return this;
+  }
 }
 
 const myLinkedList = new LinkedList(10);
@@ -192,3 +213,5 @@ console.log('myLinkedList', myLinkedList.insert(20, 88));
 // Andrei test case - remove
 console.log('myLinkedList', myLinkedList.remove(2));
 console.log('myLinkedList', myLinkedList.remove(2));
+
+console.log('myLinkedList', myLinkedList.reverse());
