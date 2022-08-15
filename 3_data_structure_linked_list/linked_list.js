@@ -1,4 +1,5 @@
 // 10 -> 5 -> 16
+// 1->10 -> 5 -> 16
 
 // let myLinkedList = {
 //   head: {
@@ -24,17 +25,18 @@ class LinkedList {
   }
 
   append(value) {
-    const newList = {
+    const newNode = {
       value: value,
       next: null,
     }
-
-    const currentTail = this.tail;
-    currentTail.next = newList;
-
-    this.tail = newList;
+    this.tail.next = newNode;
+    this.tail = newNode;
     this.length++;
-    return newList;
+    return this;
+  }
+
+  prepend(value) {
+    // Code here
   }
 }
 
@@ -45,4 +47,7 @@ myLinkedList.append(5);
 console.log('myLinkedList', myLinkedList)
 
 myLinkedList.append(16);
+console.log('myLinkedList', JSON.stringify(myLinkedList, null, 4))
+
+myLinkedList.prepend(1);
 console.log('myLinkedList', JSON.stringify(myLinkedList, null, 4))
