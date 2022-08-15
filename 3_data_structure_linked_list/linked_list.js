@@ -36,7 +36,13 @@ class LinkedList {
   }
 
   prepend(value) {
-    // Code here
+    const newNode = {
+      value: value,
+      next: this.head,
+    }
+    this.head = newNode;
+    this.length++;
+    return this;
   }
 }
 
