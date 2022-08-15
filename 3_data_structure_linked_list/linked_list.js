@@ -58,34 +58,73 @@ class LinkedList {
     return array;
   }
 
+  // my solution
+  // insert(index, value) {
+  //   if (index  > this.length + 2 || index  < 0) {
+  //     return `Please return a valid index between 0-${this.length + 1}`;
+  //   }
+
+  //   if (index === 0) {
+  //     return this.prepend(value);
+  //   }
+
+  //   if (index === this.length + 1) {
+  //     return this.append(value);
+  //   }
+
+  //   let currentNode = this.head;
+  //   let currentIndex = 0;
+
+  //   while (currentNode !== null) {
+  //     if (currentIndex === index - 1) {
+  //       const newNode = new Node(value);
+  //       newNode.next = currentNode.next;
+  //       currentNode.next = newNode;
+  //       this.length++;
+  //     }
+
+  //     currentNode = currentNode.next;
+  //     currentIndex++;
+  //   }
+
+  //   return this;
+  // }
+
+  // Andrei solution
   insert(index, value) {
-    if (index  > this.length + 2 || index  < 0) {
-      return `Please return a valid index between 0-${this.length + 1}`;
+    // check params
+    if (index >= this.length) {
+      this.append(value);
+      return this.printList();
     }
 
     if (index === 0) {
-      return this.prepend(value);
+      this.prepend(value);
+      return this.printList();
     }
 
-    if (index === this.length + 1) {
-      return this.append(value);
-    }
+    const newNode = new Node(value);
+    const leader = this.traverseToIndex(index - 1);
+    const holdingPointer = leader.next;
+    leader.next = newNode;
+    newNode.next = holdingPointer;
+    this.length++;
+    return this.printList();
+  }
 
+  traverseToIndex(index) {
+    // check params
+    let counter = 0;
     let currentNode = this.head;
-    let currentIndex = 0;
-
-    while (currentNode !== null) {
-      if (currentIndex === index - 1) {
-        const newNode = new Node(value);
-        newNode.next = currentNode.next;
-        currentNode.next = newNode;
-      }
-
+    while (counter !== index) {
       currentNode = currentNode.next;
-      currentIndex++;
+      counter++;
     }
+    return currentNode;
+  }
 
-    return this;
+  remove(index) {
+
   }
 }
 
@@ -101,17 +140,23 @@ console.log('myLinkedList', myLinkedList.printList())
 myLinkedList.prepend(1);
 console.log('myLinkedList', myLinkedList.printList())
 
-myLinkedList.insert(0, 90);
-console.log('myLinkedList', myLinkedList.printList())
+// my test case - insert
+// myLinkedList.insert(0, 90);
+// console.log('myLinkedList', myLinkedList.printList())
 
-myLinkedList.insert(1, 80);
-console.log('myLinkedList', myLinkedList.printList())
+// myLinkedList.insert(1, 80);
+// console.log('myLinkedList', myLinkedList.printList())
 
-myLinkedList.insert(6, 70);
-console.log('myLinkedList', myLinkedList.printList())
+// myLinkedList.insert(6, 70);
+// console.log('myLinkedList', myLinkedList.printList())
 
-myLinkedList.insert(6, 60);
-console.log('myLinkedList', myLinkedList.printList())
+// myLinkedList.insert(6, 60);
+// console.log('myLinkedList', myLinkedList.printList())
 
-myLinkedList.insert(4, 50);
-console.log('myLinkedList', myLinkedList.printList())
+// myLinkedList.insert(4, 50);
+// console.log('myLinkedList', myLinkedList.printList())
+
+// Andrei test case - insert
+console.log('myLinkedList', myLinkedList.insert(2, 99));
+console.log('myLinkedList', myLinkedList.insert(20, 88));
+console.log('myLinkedList', myLinkedList.insert(0, 77));
