@@ -35,7 +35,6 @@ class DoublyLinkedList {
     const array = [];
     let currentNode = this.head;
     while (currentNode !== null) {
-      console.log('currentNode', currentNode)
       array.push(currentNode.value);
       currentNode = currentNode.next;
     }
@@ -84,13 +83,37 @@ class DoublyLinkedList {
     this.length--;
     return this.printList();
   }
+
+  // if linked list = 1 -> 99 -> 5 -> 16
+  // should be = 16 -> 5 -> 99 -> 1
+  reverse() {
+    if (this.length === 1) {
+      return this.head;
+    }
+
+    let currentNode = this.tail;
+    while (currentNode !== null) {
+      if (currentNode.next === null) {
+        this.head = currentNode;
+      } else if (currentNode.prev === null) {
+        this.tail = currentNode;
+      }
+
+      const temp = currentNode.prev;
+      currentNode.prev = currentNode.next;
+      currentNode.next = temp;
+      currentNode = temp;
+    }
+    return this;
+  }
 }
 
 const myDoublyLinkedList = new DoublyLinkedList(10);
 myDoublyLinkedList.append(5);
 myDoublyLinkedList.append(16);
 myDoublyLinkedList.prepend(1);
-console.log('myDoublyLinkedList', myDoublyLinkedList.insert(1, 99));
-console.log('myDoublyLinkedList', myDoublyLinkedList.remove(2));
+console.log("myDoublyLinkedList", myDoublyLinkedList.insert(1, 99));
+console.log("myDoublyLinkedList", myDoublyLinkedList.remove(2));
 
+console.log("myDoublyLinkedList", myDoublyLinkedList.reverse());
 console.log('myDoublyLinkedList', myDoublyLinkedList.printList())
