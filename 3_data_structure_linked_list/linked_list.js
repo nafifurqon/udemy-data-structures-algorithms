@@ -24,7 +24,17 @@ class LinkedList {
   }
 
   append(value) {
-    // Code here
+    const newList = {
+      value: value,
+      next: null,
+    }
+
+    const currentTail = this.tail;
+    currentTail.next = newList;
+
+    this.tail = newList;
+    this.length++;
+    return newList;
   }
 }
 
@@ -32,3 +42,7 @@ const myLinkedList = new LinkedList(10);
 console.log('myLinkedList', myLinkedList)
 
 myLinkedList.append(5);
+console.log('myLinkedList', myLinkedList)
+
+myLinkedList.append(16);
+console.log('myLinkedList', JSON.stringify(myLinkedList, null, 4))
