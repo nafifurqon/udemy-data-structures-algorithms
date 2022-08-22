@@ -1,7 +1,6 @@
 class Stack {
   constructor() {
     this.array = [];
-    this.length = this.array.length;
   }
 
   peek() {
@@ -9,21 +8,13 @@ class Stack {
   }
 
   push(value) {
-    this.array[this.length] = value;
-    this.length++;
-
+    this.array.push(value);
     return this.array;
   }
 
   pop() {
-    if (this.length === 0) {
-      return undefined;
-    }
-
-    const deletedItem = this.array[this.length - 1];
-    delete this.array[this.length - 1];
-    this.length--;
-    return deletedItem;
+    this.array.pop();
+    return this;
   }
   //isEmpty
 }
