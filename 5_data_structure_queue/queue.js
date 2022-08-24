@@ -23,9 +23,8 @@ class Queue {
 			this.first = newNode;
 			this.last = newNode;
 		} else {
-			const holdingPointer = this.last;
+			this.last.next = newNode;
 			this.last = newNode;
-			holdingPointer.next = newNode;
 		}
 
 		this.length++;
@@ -41,8 +40,10 @@ class Queue {
 			this.last = null;
 		}
 
+		// const holdingPointer = this.first;
 		this.first = this.first.next;
 		this.length--;
+		// return holdingPointer;
 		return this;
   }
 
@@ -57,6 +58,8 @@ console.log('myQueue.peek()', myQueue.peek())
 console.log('myQueue.enqueue("Joy")', myQueue.enqueue("Joy"))
 console.log('myQueue.enqueue("Matt")', myQueue.enqueue("Matt"))
 console.log('myQueue.enqueue("Pavel")', myQueue.enqueue("Pavel"))
+console.log('myQueue.enqueue("Samir")', myQueue.enqueue("Samir"))
+console.log('myQueue.dequeue()', myQueue.dequeue())
 console.log('myQueue.dequeue()', myQueue.dequeue())
 console.log('myQueue.dequeue()', myQueue.dequeue())
 console.log('myQueue.dequeue()', myQueue.dequeue())
