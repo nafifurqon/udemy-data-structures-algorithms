@@ -39,26 +39,22 @@ class BinarySearchTree {
   }
 
   lookup(value){
-    if (this.root === null) {
-			return null;
+    if (!this.root) {
+			return false;
 		}
 
 		let currentNode = this.root;
-		while (true) {
-			if (currentNode === null) {
-				return null;
-			}
-
-			if (currentNode.value === value) {
+		while (currentNode) {
+			if (value < currentNode.value) {
+				currentNode = currentNode.left;
+			} else if (value > currentNode.value){
+				currentNode = currentNode.right;
+			} else if (currentNode.value === currentNode.value) {
 				return currentNode;
-			} else {
-				if (value < currentNode.value) {
-					currentNode = currentNode.left;
-				} else {
-					currentNode = currentNode.right;
-				}
 			}
 		}
+
+		return false;
   }
 
   // remove
