@@ -82,12 +82,10 @@ class BinarySearchTree {
 
 						// if parent > current value, make current left child a child of parent
 						if (currentNode.value < parentNode.value) {
-							console.log('currentNode.value < parentNode.value')
 							parentNode.left = currentNode.left;
 						
 						// if parent < current value, make left child a right child of a parent
 						} else if (currentNode.value > parentNode.value) {
-							console.log('currentNode.value > parentNode.value')
 							parentNode.right = currentNode.left;
 						}
 					}
@@ -174,4 +172,18 @@ function traverse(node) {
 // tree.insert(71)
 // tree.insert(1)
 // tree.remove(36)
+// console.log(JSON.stringify(traverse(tree.root), null, 4))
+
+// tree.insert(60)
+// tree.insert(30)
+// tree.insert(14)
+// tree.insert(54)
+// tree.insert(1)
+// tree.insert(55)
+// tree.insert(38)
+// tree.insert(44)
+// tree.insert(35)
+// tree.insert(33)
+// tree.insert(31)
+// tree.remove(30)
 // console.log(JSON.stringify(traverse(tree.root), null, 4))
