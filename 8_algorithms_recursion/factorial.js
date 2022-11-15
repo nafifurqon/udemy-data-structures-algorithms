@@ -5,23 +5,21 @@
  */
 
 function findFactorialRecursive(number) {
-	// code here
-	if (number <= 1) {
-		return 1
+	if (number === 2) {
+		return 2;
 	}
-
 	return number * findFactorialRecursive(number - 1);
 }
 console.log('findFactorialRecursive(5)', findFactorialRecursive(5))
 
 function findFactorialIterative(number) {
 	let answer = 1;
-
-	for (let i = number;i >= 1;i--) {
-		answer *= i;
+	if (number === 2) {
+		answer = 2;
 	}
-
+	for (let i = 2;i <= number;i++) {
+		answer = answer * i;
+	}
 	return answer;
 }
-
 console.log('findFactorialIterative(1)', findFactorialIterative(1))
