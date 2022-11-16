@@ -5,27 +5,22 @@
 
 //For example: fibonacciRecursive(6) should return 8
 
-function fibonacciIterative(n) {
-  let answer = 0;
-  let pointer1 = 0;
-  let pointer2 = 1;
+function fibonacciIterative(n) { // O(n)
+  let arr = [0, 1];
 
-  for (let i = 0; i <= n; i++) {
-    if (i <= 1) {
-      answer = i;
-    } else {
-      answer = pointer1 + pointer2;
-      pointer1 = pointer2;
-      pointer2 = answer;
-    }
-  }
+	for (let i = 2;i < n + 1;i++) {
+		arr.push(arr[i - 2] + arr[i - 1]);
+	}
 
-  return answer;
+  return arr[n];
 }
-console.log('fibonacciIterative(8)', fibonacciIterative(8));
+console.log('fibonacciIterative(6)', fibonacciIterative(6));
 
-function fibonacciRecursive(n) {
-  //code here;
+function fibonacciRecursive(n) { // O(2^n)
+	if (n < 2) {
+		return n;
+	}
+
+	return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
 }
-
-fibonacciRecursive(3);
+console.log('fibonacciRecursive(8)', fibonacciRecursive(8));
