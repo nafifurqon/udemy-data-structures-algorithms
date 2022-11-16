@@ -6,9 +6,23 @@
 //For example: fibonacciRecursive(6) should return 8
 
 function fibonacciIterative(n) {
-  //code here;
+  let answer = 0;
+  let pointer1 = 0;
+  let pointer2 = 1;
+
+  for (let i = 0; i <= n; i++) {
+    if (i <= 1) {
+      answer = i;
+    } else {
+      answer = pointer1 + pointer2;
+      pointer1 = pointer2;
+      pointer2 = answer;
+    }
+  }
+
+  return answer;
 }
-fibonacciIterative(3);
+console.log('fibonacciIterative(8)', fibonacciIterative(8));
 
 function fibonacciRecursive(n) {
   //code here;
